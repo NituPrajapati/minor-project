@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            gap: 10px;
+        }
+        button{
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 5px;
+            width: 30%;
+            height: 30%;
+            font-size: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="numbers">
+        <button style="background-color: red;">ODD</button><button style="background-color: green;">EVEN</button><button style="background-color: orange;">PRIME</button>
+        <br><br><br>
+        <button>1</button>
+        <button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button>
+        <button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button>
+        <button>16</button><button>17</button><button>18</button><button>19</button><button>20</button>
+    </div>
+        <script>
+        // var number = document.getElementsByClassName("numbers");
+        let num = document.querySelectorAll(".numbers button");
+        function isPrime(n){
+                    if(n<2) return false;
+                    for(let i=2;i<=Math.sqrt(n);i++){
+                        if(n%i === 0) return false;
+                    }
+                    return true;
+                }
+        num.forEach(btn => {
+            btn.addEventListener("click",() =>{
+                let value = parseInt(btn.textContent);
+                
+                if(isPrime(value)){
+                    btn.style.backgroundColor = "orange";
+                }
+                else if(value%2===0){
+                    btn.style.backgroundColor = "green";
+
+                }
+                else{
+                    btn.style.backgroundColor = "red";
+                }
+            });
+            
+        });
+        </script>
+    
+</body>
+</html>

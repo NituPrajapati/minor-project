@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo list</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vh;
+            height: 0%;
+            background-color: antiquewhite;
+        }
+        button{
+            padding: 5px;
+            border: solid 2px;
+            border-radius: 5px;
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div>                                     
+        <h1>
+            LEARNING JAVASCRIPT TO BUILD TO SOLUTION
+        </h1>
+        <input type="text" id="inputfield" />
+        <button class="btn"> click me</button>
+        <div class="todoListElem">
+        </div>
+    </div>
+    <script>
+        let inputelem = document.getElementById("inputfield");
+        let clickbtn = document.querySelector(".btn");
+        let firstelem = document.querySelector(".todoListElem");
+        // let firstelem = document.getElementById("todoFirst");
+        const addTodo = () => {
+            console.log(inputelem.value);
+
+            let newElem = document.createElement("p");
+            newElem.textContent = inputelem.value;
+            firstelem.appendChild(newElem);
+
+            inputelem.value = "";
+        }
+        clickbtn.addEventListener("click",()=>{
+            addTodo();
+        });
+
+        firstelem.addEventListener("click", (event) => {
+            console.log(event.target);
+            let currentEvent = event.target;
+            currentEvent.remove();
+        });
+    </script>
+</body>
+</html>
+
+<!-- event delegation  -->

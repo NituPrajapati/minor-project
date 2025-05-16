@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+        button{
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+
+
+        }
+        .btn{
+            display: grid;
+            grid-template-columns: repeat(3,auto);
+            gap: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn"></div>
+    <button id="odd-btn" style="background-color: red;" >ODD</button>
+    <button id="even-btn" style="background-color: green;">EVEN</button>
+    <button id="prime-btn" style="background-color: orange;">PRIME</button>
+    <br><br><br>
+    <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button>
+    <button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button>
+    <button>17</button><button>18</button><button>19</button><button>20</button><button>21</button><button>22</button><button>23</button><button>24</button>
+    </div>
+    <script>                       //not working code
+    let buttons = document.querySelectorAll(".btn button");
+    let odd = document.getElementById("odd-btn");
+    let even = document.getElementById("even-btn");
+    let prime = document.getElementById("prime-btn");
+        function isPrime(n){
+                    if(n<2) return false;
+                    for(let i=2;i<=Math.sqrt(n);i++){
+                        if(n%i === 0) return false;
+                    }
+                    return true;
+                }
+        let allbuttons = Array.from(buttons).slice(3);
+        odd.addEventListener("click",()=>{
+            allbuttons.forEach(btn=>{
+            let value = parseInt(btn.textContent);;
+            if(value%2 !==0){
+                btn.style.backgroundColor = "red";
+            }
+            });
+        });
+        even.addEventListener("click",()=>{
+           allbuttons.forEach(btn=>{
+            let value = parseInt(btn.textContent);;
+            if(value%2 ===0){
+                btn.style.backgroundColor = "green";
+            }
+           });
+        })
+        prime.addEventListener("click",()=>{
+            allbuttons.forEach(btn=>{
+            let value = parseInt(btn.textContent);
+            if(isPrime(value)){
+                btn.style.backgroundColor = "orange";
+            }
+            })
+        })
+
+    </script>
+</body>
+</html>
+<!-- 
+clouse
+...args   -->

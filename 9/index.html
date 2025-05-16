@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        *{
+            padding: 5px;
+            font-size: 18px;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            padding: 10px;
+        }
+        button{
+            padding: 10px 20px;
+            border: 2px solid whitesmoke;
+            border-radius: 20px;
+            box-shadow: 0px 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn1" style="background-color: black; color: white;">#000000</button>
+        <button id="btn2"  style="background-color: greenyellow; color: black;">#000000</button>
+
+        <h2>Copy your code here</h2>
+        <p class="copycode">background-image: linear-gradient(to right, rgb(0,0,0), rgb(0,0,0));</p>
+    </div>
+    <script>
+        let button1 = document.getElementById("btn1");
+        let button2 = document.getElementById("btn2");
+        let code = document.querySelector(".copycode");
+        let rgb1 = "#000";
+        let rgb2 = "#fff";
+
+
+        const hexaCode = () =>{
+            let hexvalues = "0123456789abcdef";
+            let colors = "#";
+            for(let i=0;i<6;i++){
+                colors = colors + hexvalues[Math.floor(Math.random()*16)];
+            }
+            return colors;
+        }
+
+        const handleButton1 = () =>{
+            rgb1 = hexaCode();
+            console.log(rgb1);
+            button1.innerText = rgb1;
+            document.body.style.backgroundImage = `linear-gradient(to right,${rgb1}, ${rgb2});`;
+            code.innerHTML = `background-image: linear-gradient(to right,${rgb1}, ${rgb2});`;
+        };
+
+        const handleButton2 = () =>{
+            rgb2 = hexaCode();
+            console.log(rgb2);
+            button2.innerText = rgb2;
+            document.body.style.backgroundImage = `linear-gradient(to right,${rgb1}, ${rgb2});`;
+            code.innerHTML = `background-image: linear-gradient(to right,${rgb1}, ${rgb2});`;
+
+        }
+        
+        button1.addEventListener("click",handleButton1);
+        button2.addEventListener("click",handleButton2);
+
+        code.addEventListener("click",()=>{
+            navigator.clipboard.writeText(code.innerText);
+        });
+    </script>
+</body>
+</html>
+

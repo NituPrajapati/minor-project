@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .mainDiv{
+            background-color: white;
+            width: 400px;
+            padding: 30px;
+            box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 5px solid #000; 
+        }
+        i{
+            font-size: 20px;
+            
+        }
+        p{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+            
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="mainDiv">
+        <i class="fa-solid fa-clock"></i>
+        <p id="clock"></p>
+
+    </div>
+    <script>
+        const currentTime = () =>{
+            let currTime = new Date().toLocaleTimeString();
+            document.getElementById("clock").innerText = currTime;
+        }
+        
+        const interval = setInterval(()=> {
+            currentTime();
+        },1000);
+
+        setTimeout(() => {
+           clearInterval(interval)
+        }, 5000);
+    </script>
+</body>
+</html>

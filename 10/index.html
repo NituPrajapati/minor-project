@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Todo List</title>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-container">
+   <div class="todo-app">
+    <h2>To-Do List <img src="todo.jpg" alt="image"></h2>
+    <div class="list">
+      <input type="text" id="input-box" placeholder="Enter the task...">
+      <button onclick="addTask()">Add</button>
+      </div>
+      <ul id="list-container">
+        <!-- <li class="checked">task 1</li>
+        <li>task 1</li>
+        <li>task 1</li> -->
+      </ul>
+    </div>
+   </div> 
+</div>
+
+<script>
+  let todoInput = document.getElementById("input-box");
+  let todoList = document.getElementById("list-container");
+  
+  function addTask(){
+    if(todoInput.value === ''){
+      alert("please write task..");
+    } else{
+      let divElement = document.createElement("li");
+      divElement.innerHTML = todoInput.value;
+      // divElement.classList.add("todoList");
+      todoList.appendChild(divElement);
+
+      let span = document.createElement("span");
+      span.innerHTML = "\u00d7";
+      divElement.appendChild(span);
+    }
+    console.log(todoInput.value);
+    todoInput.value = "";
+    data();
+  }
+todoList.addEventListener("click",function(e){
+  if(e.target.tagName === "LI"){
+    e.target.classList.toggle("checked");
+    data();
+  } else if(e.target.tagName === "SPAN"){
+    e.target.parentElement.remove();
+    data();
+  }
+}, false);
+
+function data() {
+  localStorage.setItem("data",todoList.innerHTML);
+}
+function showTask(){
+  todoList.innerHTML = localStorage.getItem("data");
+}
+showTask();
+
+new Sortable(document.getElementById("list-container"), {
+    animation: 150
+  });
+
+</script>
+
+</body>
+</html>
